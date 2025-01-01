@@ -46,3 +46,9 @@ $(document).ready(function () {
 	$('#btnShuffle').click(shuffleTowns);
 });
 
+function showMessage(msg) {
+	$('#result').text(msg).css("display", "block");
+	setTimeout(() => {
+		$('#result').hide('blind', {}, 500);
+	}, 3000);
+}
