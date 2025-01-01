@@ -1,6 +1,7 @@
 $(document).ready(function() {
-	$('#btnDelete').click(deleteTown)
+	$('#btnDelete').click(deleteTown);
 	$('#btnAdd').click(addTown);
+	$('#btnShuffle').click(shuffleTowns);
 });
 
 function deleteTown() {
@@ -25,3 +26,23 @@ function addTown() {
 	$('#towns').append($('<option>').text(townName));
 	$('#result').text(townName + " added.");
 }
+
+function shuffleTowns() {
+	let towns = $('#towns option').toArray();
+	$('#towns').empty();
+	shuffleArray(towns);
+	$('#towns').append(towns);
+	showMessage("Towns shuffled.");
+}
+
+function shuffleArray(array) {
+	for (let i = array.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[array[i], array[j]] = [array[j], array[i]];
+	}
+}
+
+$(document).ready(function () {
+	$('#btnShuffle').click(shuffleTowns);
+});
+
